@@ -16,7 +16,7 @@ Next, move script into autologin folder:
 
 ```bash
 mkdir autologin
-mv index.php autologin
+mv autologin.php autologin/index.php
 ```
 
 In your ``docker-compose.yml`` file in wordpress service add:
