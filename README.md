@@ -9,7 +9,7 @@
 Download this script directly with ``wget`` or ``curl``, for example:
 
 ```bash
-wget https://raw.githubusercontent.com/stuntcoders/stunt_utils/main/stunt_wp_autologin/index.php
+wget https://raw.githubusercontent.com/stuntcoders/stunt_utils/main/stunt_wp_autologin/autologin.php
 ```
 
 Next, move script into autologin folder:
