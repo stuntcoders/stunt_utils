@@ -6,13 +6,15 @@
  * @link https://github.com/stuntcoders/stunt_utils
  */
 
-$server_is_set = isset( $_SERVER );
-$env_domain    = getenv( 'WORDPRESS_ADMIN_DOMAIN' );
-$http_host     = '';
+$login_url_env  = 'WORDPRESS_LOGIN_URL';
+$login_name_env = 'WORDPRESS_LOGIN_NAME';
+$server_is_set  = isset( $_SERVER );
+$env_domain     = getenv( $login_url_env );
+$http_host      = '';
 
 // Check if WORDPRESS_DOMAIN is set.
 if ( empty( $env_domain ) ) {
-	echo 'WORDPRESS_DOMAIN is not set. Check environmet variables in Dockerfile.';
+	echo esc_html( $login_url_env ) . ' is not set. Check environmet variables in Dockerfile.';
 	die;
 }
 
@@ -36,7 +38,7 @@ if ( $env_domain !== $site_url ) {
 define( 'WP_USE_THEMES', false );
 require '../wp-blog-header.php';
 
-$user_login_name = getenv( 'WORDPRESS_ADMIN_LOGIN' );
+$user_login_name = getenv( $login_name_env );
 $user            = get_user_by( 'login', $user_login_name );
 
 wp_set_current_user( $user->ID, $user_login_name );
