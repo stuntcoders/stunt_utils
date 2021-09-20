@@ -12,8 +12,8 @@ services:
   wordpress:
         ...
     environment:
-+     WORDPRESS_ADMIN_DOMAIN: 'domain name'
-+     WORDPRESS_ADMIN_LOGIN: 'db admin name'
++     WORDPRESS_LOGIN_URL: 'domain name'
++     WORDPRESS_LOGIN_NAME: 'db admin name'
         ...
 
       volumes:
