@@ -18,7 +18,7 @@ $http_host      = '';
 
 // If admin login name and url are not set, use defaults.
 if( ! isset( $login_url_env ) || empty( $login_url_env ) ) {
-	$env_domain = $default_url;
+	$login_url_env = $default_url;
 }
 
 if( ! isset( $login_name_env ) || empty( $login_name_env ) ) {
@@ -37,7 +37,7 @@ $ssl_enabled = isset( $_SERVER['HTTPS'] ) && 'on' === $_SERVER['HTTPS'];
 $site_url    = ( $ssl_enabled ? 'https://' : 'http://' ) . $http_host;
 
 // Die if on any other domain.
-if ( $env_domain !== $site_url ) {
+if ( $login_url_env !== $site_url ) {
 	echo 'Site url does not match provided domain. Check environment variables in dockerfile.';
 	die;
 }
