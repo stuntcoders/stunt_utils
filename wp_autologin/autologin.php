@@ -6,20 +6,27 @@
  * @link https://github.com/stuntcoders/stunt_utils
  */
 
-$login_url_env  = 'WORDPRESS_LOGIN_URL';
-$login_name_env = 'WORDPRESS_LOGIN_NAME';
-$server_is_set  = isset( $_SERVER );
-$env_domain     = getenv( $login_url_env );
+// Get envs from phpdotenv.
+$login_url_env  = getenv( 'WORDPRESS_LOGIN_URL' );
+$login_name_env = getenv( 'WORDPRESS_LOGIN_NAME' );
+
+// If phpdotenv is not available, manually set this up.
+$default_url 	= 'http://localhost';
+$default_login  = 'admin';
+
 $http_host      = '';
 
-// Check if WORDPRESS_DOMAIN is set.
-if ( empty( $env_domain ) ) {
-	echo esc_html( $login_url_env ) . ' is not set. Check environmet variables in Dockerfile.';
-	die;
+// If admin login name and url are not set, use defaults.
+if( ! isset( $login_url_env ) || empty( $login_url_env ) ) {
+	$env_domain = $default_url;
+}
+
+if( ! isset( $login_name_env ) || empty( $login_name_env ) ) {
+	$login_name_env = $default_login;
 }
 
 // Check if $_SERVER is set.
-if ( ! $server_is_set ) {
+if ( ! isset( $_SERVER ) ) {
 	echo '$_SERVER global variable is not set.';
 	die;
 }
