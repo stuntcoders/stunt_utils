@@ -6,23 +6,14 @@
  * @link https://github.com/stuntcoders/stunt_utils
  */
 
-// Get envs from phpdotenv.
-$login_url_env  = getenv( 'WORDPRESS_LOGIN_URL' );
-$login_name_env = getenv( 'WORDPRESS_LOGIN_NAME' );
+$server_is_set = isset( $_SERVER );
+$env_domain    = getenv( 'WORDPRESS_ADMIN_DOMAIN' );
+$http_host     = '';
 
-// If phpdotenv is not available, manually set this up.
-$default_url 	= 'http://localhost';
-$default_login  = 'admin';
-
-$http_host      = '';
-
-// If admin login name and url are not set, use defaults.
-if( ! isset( $login_url_env ) || empty( $login_url_env ) ) {
-	$login_url_env = $default_url;
-}
-
-if( ! isset( $login_name_env ) || empty( $login_name_env ) ) {
-	$login_name_env = $default_login;
+// Check if WORDPRESS_DOMAIN is set.
+if ( empty( $env_domain ) ) {
+	echo 'WORDPRESS_DOMAIN is not set. Check environmet variables in Dockerfile.';
+	die;
 }
 
 // Check if $_SERVER is set.
@@ -45,7 +36,7 @@ if ( $login_url_env !== $site_url ) {
 define( 'WP_USE_THEMES', false );
 require '../wp-blog-header.php';
 
-$user_login_name = getenv( $login_name_env );
+$user_login_name = getenv( 'WORDPRESS_ADMIN_LOGIN' );
 $user            = get_user_by( 'login', $user_login_name );
 
 wp_set_current_user( $user->ID, $user_login_name );
