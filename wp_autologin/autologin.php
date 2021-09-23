@@ -10,7 +10,7 @@ $server_is_set = isset( $_SERVER );
 $env_domain    = getenv( 'WORDPRESS_LOGIN_URL' );
 $http_host     = '';
 
-// Check if WORDPRESS_DOMAIN is set.
+// Check if WORDPRESS_LOGIN_URL is set.
 if ( empty( $env_domain ) ) {
 	echo 'WORDPRESS_LOGIN_URL is not set. Check environmet variables in Dockerfile.';
 	die;
