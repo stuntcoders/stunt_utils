@@ -32,5 +32,5 @@ services:
 
       volumes:
         ... 
-+       - ./autologin:/var/www/autologin
++       - autologin:/var/www/autologin
 ```
