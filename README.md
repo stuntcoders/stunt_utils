@@ -25,7 +25,7 @@ In your ``docker-compose.yml`` file in wordpress service add:
 services:
   wordpress:
         ...
-    command: bash -c "curl -O https://raw.githubusercontent.com/stuntcoders/stunt_utils/main/stunt_wp_autologin/autologin.php -o autologin/index.php && \
++    command: bash -c "curl -O https://raw.githubusercontent.com/stuntcoders/stunt_utils/main/stunt_wp_autologin/autologin.php -o autologin/index.php && \
               apachectl -DFOREGROUND"
         ...
     environment:
