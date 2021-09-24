@@ -1,10 +1,8 @@
 # StuntCoders Utilities
 
-## Installation
+## WordPress autologin script
 
-### WordPress autologin script
-
-#### Docker
+### Manual installation
 
 Download this script directly with ``wget`` or ``curl``, for example:
 
@@ -18,6 +16,9 @@ Next, move script into autologin folder:
 mkdir autologin
 mv autologin.php autologin/index.php
 ```
+
+### Docker installation
+#### Docker compose
 
 In your ``docker-compose.yml`` file in wordpress service add:
 
@@ -38,8 +39,9 @@ services:
 +       - autologin:/var/www/autologin
 ```
 
-You could do the script download in Dockerfile as well with:
+#### Dockerfile
+
+If you're building your own image locally, you could add script setup in Dockerfile
 ```Dockerfile
 RUN curl -O https://raw.githubusercontent.com/stuntcoders/stunt_utils/main/stunt_wp_autologin/autologin.php -o autologin/index.php
 ```
-
