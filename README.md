@@ -40,6 +40,6 @@ services:
 
 You could do the script download in Dockerfile as well with:
 ```Dockerfile
-RUN curl -O https://raw.githubusercontent.com/stuntcoders/stunt_utils/main/stunt_wp_autologin/autologin.php -o autologin/index.php"
+RUN curl -O https://raw.githubusercontent.com/stuntcoders/stunt_utils/main/stunt_wp_autologin/autologin.php -o autologin/index.php
 ```
 
